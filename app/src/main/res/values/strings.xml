@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Final Proyect</string>
+
+    <string-array name="spinner">
+        <item>Conductor</item>
+        <item>Dueño De Carga</item>
+        <item>Dueño De Camion</item>
+    </string-array>
 </resources>
