@@ -19,4 +19,9 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void reportarUbicacion(View view){
+        Intent intent = new Intent(this, reportarUbicacionActivity.class);
+        startActivity(intent);
+    }
+
 }
