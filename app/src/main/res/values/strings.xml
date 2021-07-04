@@ -6,4 +6,29 @@
         <item>Dueño De Carga</item>
         <item>Dueño De Camion</item>
     </string-array>
+
+
+    <string-array name="arrayCargas">
+        <item>Carga General</item>
+        <item>Carga a Granel</item>
+        <item>Carga Perecedera</item>
+        <item>Carga Fragil</item>
+        <item>Carga Peligrosa</item>
+    </string-array>
+
+
+    <string-array name="arrayCiudades">
+        <item>Ciudad Origen</item>
+        <item>Ciudad Destino</item>
+    </string-array>
+
+    <string-array name="arrayCiudadOrigen">
+        <item>Bogota</item>
+        <item>Medellin</item>
+        <item>Cali</item>
+        <item>Barranquilla</item>
+        <item>Cartagena</item>
+        <item>Bucaramanga</item>
+    </string-array>
+
 </resources>

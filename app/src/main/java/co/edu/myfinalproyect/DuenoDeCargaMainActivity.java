@@ -14,8 +14,15 @@ public class DuenoDeCargaMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dueno_de_carga_main);
     }
 
+    //lo devuelve a la pantalla login en caso de que de cerrar sesion
     public void registro1(View view){
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    //llevarlo a la pantalla para seleccionar el formulario de solicitud de una carga
+    public void solicitudCarga(View view){
+        Intent intent = new Intent(this, TipoDeCargaActivity.class);
         startActivity(intent);
     }
 

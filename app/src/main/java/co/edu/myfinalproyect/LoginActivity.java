@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         if (selectedUser.equals("Conductor")){
             Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
+
         } else if(selectedUser.equals("Dueño De Carga")){
             Intent intent = new Intent(this, DuenoDeCargaMainActivity.class);
             startActivity(intent);
