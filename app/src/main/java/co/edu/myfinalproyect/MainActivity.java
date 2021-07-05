@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import co.edu.myfinalproyect.utilidades.Utilidades;
 
@@ -72,16 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
         registrarUsuarios();
 
-        if (selectedUser.equals("Conductor")){
-            Intent intent = new Intent(this, MenuActivity.class);
+
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        } else if(selectedUser.equals("Dueño De Carga")){
-            Intent intent = new Intent(this, DuenoDeCargaMainActivity.class);
-            startActivity(intent);
-        } else{
-            Intent intent = new Intent(this, PropietarioCamionActivity.class);
-            startActivity(intent);
-        }
+
     }
 
     private void registrarUsuarios() {
@@ -118,6 +113,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
             db.close();
+
+            campoId.setText("");
+            campoContraseña.setText("");
+            campoFecha.setText("");
+            campoCorreo.setText("");
+            campoApellido.setText("");
+            campoNombre.setText("");
         }catch (Exception ex){
             ex.toString();
         }

@@ -1,6 +1,8 @@
 package co.edu.myfinalproyect;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -30,5 +32,12 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS DuenoCamion ");
         db.execSQL("DROP TABLE IF EXISTS DuenoCarga ");
         onCreate(db);
+    }
+    
+    public Cursor consultarUsuPas (String usu, String pass) throws SQLException{
+        Cursor mcursor=null;
+        mcursor=this.getReadableDatabase().query(DATABASE_N,new String[]{"id","contraseña"},
+                "id like '" +usu+ "' " + "and contraseña like '" +pass+ "'", null,null,null,null,null);
+        return mcursor;
     }
 }
