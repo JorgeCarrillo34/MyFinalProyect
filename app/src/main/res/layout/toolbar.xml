@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/design_default_color_primary"
+    android:background="#B7D039"
     app:title="E2E"
     app:titleTextColor="#FFFFFF">
+
 
 </androidx.appcompat.widget.Toolbar>
