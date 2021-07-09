@@ -13,8 +13,9 @@ import co.edu.myfinalproyect.utilidades.Utilidades;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_V=7;
+    public static final int DATABASE_V=9;
     public static final String DATABASE_N="db_transporte";
+
     public ConexionSQLHelper(@Nullable Context context) {
         super(context, DATABASE_N, null, DATABASE_V);
     }
@@ -34,9 +35,9 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
     
-    public Cursor consultarUsuPas (String usu, String pass) throws SQLException{
+    public Cursor consultarUsuPas (SQLiteDatabase db, String usu, String pass) throws SQLException{
         Cursor mcursor=null;
-        mcursor=this.getReadableDatabase().query(DATABASE_N,new String[]{"id","contraseña"},
+        mcursor = db.query(DATABASE_N,new String[]{"id","contraseña"},
                 "id like '" +usu+ "' " + "and contraseña like '" +pass+ "'", null,null,null,null,null);
         return mcursor;
     }

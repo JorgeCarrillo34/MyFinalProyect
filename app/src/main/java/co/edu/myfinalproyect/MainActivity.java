@@ -19,9 +19,10 @@ import co.edu.myfinalproyect.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText campoId, campoNombre,campoApellido, campoCorreo, campoFecha, campoContraseña;
+    EditText campoId, campoNombre,campoApellido, campoCorreo, campoFecha, campoContraseña,confi;
+    Spinner trabajo;
     private int gender;
-    private String sex;
+    private String sex, selectedUser;
 
 
     @Override
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         campoCorreo=(EditText) findViewById(R.id.correoElectronico);
         campoFecha=(EditText) findViewById(R.id.fecha);
         campoContraseña=(EditText) findViewById(R.id.contra);
+        confi=(EditText) findViewById(R.id.contraConfirm);
+        trabajo=(Spinner)findViewById(R.id.spinnerRegistro);
+        selectedUser = String.valueOf(trabajo.getSelectedItem());
 
 
 
@@ -68,11 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void registroUsuario(View view){
-        Spinner usuario = (Spinner)findViewById(R.id.spinnerRegistro);
-        String selectedUser = String.valueOf(usuario.getSelectedItem());
 
         registrarUsuarios();
-
 
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -83,35 +84,43 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             ConexionSQLHelper conn = new ConexionSQLHelper(this);
-            Spinner usuario = (Spinner) findViewById(R.id.spinnerRegistro);
-            String selectedUser = String.valueOf(usuario.getSelectedItem());
             SQLiteDatabase db = conn.getWritableDatabase();
             long idResultante=0;
 
-            ContentValues values = new ContentValues();
-            values.put(Utilidades.CAMPO_ID, campoId.getText().toString());
-            values.put(Utilidades.CAMPO_nombre, campoNombre.getText().toString());
-            values.put(Utilidades.CAMPO_apelllido, campoApellido.getText().toString());
-            values.put(Utilidades.CAMPO_correo, campoCorreo.getText().toString());
-            values.put(Utilidades.CAMPO_Fecha, campoFecha.getText().toString());
-            values.put(Utilidades.CAMPO_contraseña, campoContraseña.getText().toString());
-            values.put(Utilidades.CAMPO_sexo, sex);
+            if (campoId.getText().toString().equals("") || campoNombre.getText().toString().equals("") || campoApellido.getText().toString().equals("")
+            || campoCorreo.getText().toString().equals("") || campoFecha.getText().toString().equals("") || campoContraseña.getText().toString().equals("")
+            || sex.equals("") || selectedUser.equals("") || confi.equals("")){
+                Toast.makeText(getApplicationContext(), "Debe ingresar datos", Toast.LENGTH_LONG).show();
+            } else if(campoContraseña.getText().toString().equals(confi.getText().toString())){
 
-            if (selectedUser.equals("Conductor")) {
-                idResultante = db.insert(Utilidades.TABLA_CONDUCTOR, Utilidades.CAMPO_ID, values);
-                //Log.v("hola", " " + Utilidades.TABLA_CONDUCTOR );
-            } else if (selectedUser.equals("Dueño De Carga")) {
-                idResultante = db.insert(Utilidades.TABLA_DUENOCARGA, Utilidades.CAMPO_ID, values);
-            } else {
-                idResultante = db.insert(Utilidades.TABLA_DUENOCAMION, Utilidades.CAMPO_ID, values);
+                ContentValues values = new ContentValues();
+                values.put(Utilidades.CAMPO_ID, campoId.getText().toString());
+                values.put(Utilidades.CAMPO_nombre, campoNombre.getText().toString());
+                values.put(Utilidades.CAMPO_apelllido, campoApellido.getText().toString());
+                values.put(Utilidades.CAMPO_correo, campoCorreo.getText().toString());
+                values.put(Utilidades.CAMPO_Fecha, campoFecha.getText().toString());
+                values.put(Utilidades.CAMPO_contraseña, campoContraseña.getText().toString());
+                values.put(Utilidades.CAMPO_sexo, sex);
+                values.put(Utilidades.CAMPO_trabajo, selectedUser);
+
+                if (selectedUser.equals("Conductor")) {
+                    idResultante = db.insert(Utilidades.TABLA_CONDUCTOR, Utilidades.CAMPO_ID, values);
+                } else if (selectedUser.equals("Dueño De Carga")) {
+                    idResultante = db.insert(Utilidades.TABLA_DUENOCARGA, Utilidades.CAMPO_ID, values);
+                } else {
+                    idResultante = db.insert(Utilidades.TABLA_DUENOCAMION, Utilidades.CAMPO_ID, values);
+                }
+
+                if (idResultante > 0) {
+                    Toast.makeText(getApplicationContext(), "Registro guardado", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                Toast.makeText(getApplicationContext(), "Las contraseñas deben coincidir", Toast.LENGTH_LONG).show();
+                Log.v("Contraseña", " " + campoContraseña.getText().toString());
+                Log.v("Confirmar Contraseña", " " + confi);
             }
-
-            if (idResultante>0){
-                Toast.makeText(getApplicationContext(), "Registro guardado", Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-
             db.close();
 
             campoId.setText("");
@@ -120,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             campoCorreo.setText("");
             campoApellido.setText("");
             campoNombre.setText("");
+            confi.setText("");
         }catch (Exception ex){
             ex.toString();
         }

@@ -1,7 +1,10 @@
 package co.edu.myfinalproyect;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +15,16 @@ import android.widget.ListView;
 public class CargaGranelMainActivity extends AppCompatActivity {
 
     ListView cargaGranel;
-
+    Toolbar toolbar;
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_granel_main);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDefaultDisplayHomeAsUpEnabled(true);
 
         cargaGranel = (ListView) findViewById(R.id.listViewCargaGranel);
 

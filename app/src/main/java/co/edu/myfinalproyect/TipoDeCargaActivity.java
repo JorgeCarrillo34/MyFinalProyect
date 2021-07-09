@@ -1,6 +1,7 @@
 package co.edu.myfinalproyect;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -25,6 +26,8 @@ public class TipoDeCargaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tipo_de_carga);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDefaultDisplayHomeAsUpEnabled(true);
 
         listaCarga = (ListView) findViewById(R.id.listViewId);
 

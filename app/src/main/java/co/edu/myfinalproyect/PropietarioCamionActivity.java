@@ -24,11 +24,10 @@ public class PropietarioCamionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_propietario_camion);
 
         toolbar=findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
-
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setDefaultDisplayHomeAsUpEnabled(true);
     }
 
     @Override

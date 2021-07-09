@@ -16,77 +16,56 @@
         <activity android:name=".CargaPeligrosaMainActivity"
 
             android:parentActivityName=".TipoDeCargaActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".CargaFragilMainActivity"
 
             android:parentActivityName=".TipoDeCargaActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".CargaPerecederaMainActivity"
 
             android:parentActivityName=".TipoDeCargaActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".CargaGranelMainActivity"
 
             android:parentActivityName=".TipoDeCargaActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".CargaGeneralMainActivity"
 
             android:parentActivityName=".TipoDeCargaActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".TipoDeCargaActivity"
 
             android:parentActivityName=".DuenoDeCargaMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DuenoDeCargaMainActivity"/>
+                android:value=".TipoDeCargaActivity"/>
+
         </activity>
         <activity android:name=".reportarUbicacionActivity" />
-        <activity android:name=".DuenoDeCargaMainActivity"
+        <activity android:name=".DuenoDeCargaMainActivity">
 
-            android:parentActivityName=".LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity"/>
+                android:value=".DuenoDeCargaMainActivity"/>
         </activity>
 
-        <activity android:name=".PropietarioCamionActivity"
-
-            android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity"/>
-
-        </activity>
-        <activity android:name=".MenuActivity"
-
-            android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity"/>
-
-        </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".PropietarioCamionActivity"/>
+        <activity android:name=".MenuActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity"/>
         </activity>
     </application>
 

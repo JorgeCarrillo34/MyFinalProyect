@@ -12,19 +12,23 @@ public class Utilidades {
     public static final String CAMPO_contraseña="contraseña";
     public static final String CAMPO_Fecha="fecha";
     public static final String CAMPO_sexo="sexo";
+    public static final String CAMPO_trabajo="trabajo";
 
 
 
 
     public static final String CREAR_TABLA_CONDUCTOR="CREATE TABLE "+TABLA_CONDUCTOR+
-            " ("+CAMPO_ID+" INTEGER, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido
-            +" TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+" TEXT, "+CAMPO_sexo+" TEXT ) ";
+            " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido
+            +" TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT ) ";
     public static final String CREAR_TABLA_DUENOCARGA="CREATE TABLE "+TABLA_DUENOCARGA+
-            " ("+CAMPO_ID+" INTEGER, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
-            " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+" TEXT, "+CAMPO_sexo+" TEXT ) ";
+            " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
+            " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT) ";
     public static final String CREAR_TABLA_DUENOCAMION="CREATE TABLE "+TABLA_DUENOCAMION+
-            " ("+CAMPO_ID+" INTEGER, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
-            " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+" TEXT, "+CAMPO_sexo+" TEXT ) ";
+            " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
+            " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT) ";
 
 
 
