@@ -29,6 +29,11 @@ public class DuenoDeCargaMainActivity extends AppCompatActivity {
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
     }
 
+    public void onSendMaps1(View v){
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);

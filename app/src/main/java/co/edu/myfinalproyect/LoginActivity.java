@@ -24,11 +24,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         btnlogin = (Button) findViewById(R.id.buttonLogin);
 
     }
-
 
 
     public void registro(View view) {

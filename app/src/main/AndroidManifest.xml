@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="co.edu.myfinalproyect">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,52 +16,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFinalProyect">
-        <activity android:name=".AjustesActivity"></activity>
-        <activity android:name=".CiudadDestinoMainActivity"/>
-        <activity android:name=".CiudadOrigenMainActivity"/>
-        <activity android:name=".CargaPeligrosaMainActivity"
-
-            android:parentActivityName=".TipoDeCargaActivity">
-
-        </activity>
-        <activity android:name=".CargaFragilMainActivity"
-
-            android:parentActivityName=".TipoDeCargaActivity">
-
-        </activity>
-        <activity android:name=".CargaPerecederaMainActivity"
-
-            android:parentActivityName=".TipoDeCargaActivity">
-
-        </activity>
-        <activity android:name=".CargaGranelMainActivity"
-
-            android:parentActivityName=".TipoDeCargaActivity">
-
-        </activity>
-        <activity android:name=".CargaGeneralMainActivity"
-
-            android:parentActivityName=".TipoDeCargaActivity">
-
-        </activity>
-        <activity android:name=".TipoDeCargaActivity"
-
-            android:parentActivityName=".DuenoDeCargaMainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TipoDeCargaActivity"/>
-
-        </activity>
+        <activity android:name=".EmailActivity"></activity>
+        <activity android:name=".MapsActivity" />
+        <activity
+            android:name=".AjustesActivity"
+            android:parentActivityName=".MenuActivity" />
+        <activity android:name=".CiudadDestinoMainActivity" />
+        <activity android:name=".CiudadOrigenMainActivity" />
+        <activity android:name=".CargaPeligrosaMainActivity" />
+        <activity android:name=".CargaFragilMainActivity" />
+        <activity android:name=".CargaPerecederaMainActivity" />
+        <activity android:name=".CargaGranelMainActivity" />
+        <activity android:name=".CargaGeneralMainActivity" />
+        <activity android:name=".TipoDeCargaActivity" />
         <activity android:name=".reportarUbicacionActivity" />
-        <activity android:name=".DuenoDeCargaMainActivity">
-
+        <activity android:name=".DuenoDeCargaMainActivity" />
+        <activity android:name=".PropietarioCamionActivity" />
+        <activity android:name=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".DuenoDeCargaMainActivity"/>
+                android:value=".MenuActivity" />
         </activity>
-
-        <activity android:name=".PropietarioCamionActivity"/>
-        <activity android:name=".MenuActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -63,9 +44,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity"/>
         </activity>
     </application>
 

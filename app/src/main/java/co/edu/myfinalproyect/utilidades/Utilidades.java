@@ -1,5 +1,9 @@
 package co.edu.myfinalproyect.utilidades;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Utilidades {
 
     public static final String TABLA_CONDUCTOR="Conductor";
@@ -13,8 +17,6 @@ public class Utilidades {
     public static final String CAMPO_Fecha="fecha";
     public static final String CAMPO_sexo="sexo";
     public static final String CAMPO_trabajo="trabajo";
-
-
 
 
     public static final String CREAR_TABLA_CONDUCTOR="CREATE TABLE "+TABLA_CONDUCTOR+

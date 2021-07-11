@@ -29,6 +29,10 @@ public class PropietarioCamionActivity extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
     }
+    public void onSendMaps1(View v){
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

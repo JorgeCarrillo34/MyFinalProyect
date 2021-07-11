@@ -31,4 +31,7 @@
         <item>Bucaramanga</item>
     </string-array>
 
+    <string name="android_sdk_places_api_key">AIzaSyCfh5s0uQfw5jnVO_S0aioaY08Jm80DSrw</string>
+
+
 </resources>
