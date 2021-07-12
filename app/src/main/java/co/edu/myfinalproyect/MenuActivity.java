@@ -1,4 +1,4 @@
-package co.edu.myfinalproyect;
+   package co.edu.myfinalproyect;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,7 +73,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void Email(View c){
-        Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NUEVOEMAIL.class);
         startActivity(intent);
     }
 
