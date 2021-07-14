@@ -2,6 +2,8 @@ package co.edu.myfinalproyect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteDatabase;
+import co.edu.myfinalproyect.LoginActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -9,6 +11,10 @@ import android.widget.ListView;
 public class CiudadDestinoMainActivity extends AppCompatActivity {
 
     ListView ciudadDestino;
+    ConexionSQLHelper conn= new ConexionSQLHelper(this);
+    SQLiteDatabase db = conn.getReadableDatabase();
+    LoginActivity plan = new LoginActivity();
+    private int id = plan.getId1();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

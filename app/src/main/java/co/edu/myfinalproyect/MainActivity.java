@@ -15,6 +15,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import co.edu.myfinalproyect.entidades.Conductor;
+import co.edu.myfinalproyect.entidades.DuenoCamion;
+import co.edu.myfinalproyect.entidades.DuenoCarga;
 import co.edu.myfinalproyect.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +48,16 @@ public class MainActivity extends AppCompatActivity {
         selectedUser = String.valueOf(trabajo.getSelectedItem());
 
 
-
+        if (selectedUser.equals("Conductor")) {
+            Conductor cond = new Conductor(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
+        } else if (selectedUser.equals("Dueño De Carga")) {
+            DuenoCarga duenCar = new DuenoCarga(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
+        } else {
+            DuenoCamion duenCam = new DuenoCamion(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
+        }
     }
 
     public void onRadioButtonClicked(View view){

@@ -13,7 +13,7 @@ import co.edu.myfinalproyect.utilidades.Utilidades;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_V=9;
+    public static final int DATABASE_V=10;
     public static final String DATABASE_N="db_transporte";
 
     public ConexionSQLHelper(@Nullable Context context) {
@@ -34,7 +34,14 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS DuenoCarga ");
         onCreate(db);
     }
-    
+
+    public Cursor getData (int id) {
+
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "  +DATABASE_N+ "where id="+id+"",null);
+        return cursor;
+    }
+
     public Cursor consultarUsuPas (SQLiteDatabase db, String usu, String pass) throws SQLException{
         Cursor mcursor=null;
         mcursor = db.query(DATABASE_N,new String[]{"id","contraseña"},

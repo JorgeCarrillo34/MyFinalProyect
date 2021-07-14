@@ -3,10 +3,15 @@ package co.edu.myfinalproyect;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ComponentActivity;
 
+import co.edu.myfinalproyect.LoginActivity.*;
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -25,11 +30,18 @@ import java.security.KeyPairGenerator;
 import java.util.List;
 import java.util.Locale;
 
+import co.edu.myfinalproyect.entidades.Conductor;
+import co.edu.myfinalproyect.utilidades.Utilidades;
+
 public class MapsActivity extends AppCompatActivity {
 
     private Button bt_locatio;
     private TextView textView4, textView5, textView6, textView7, textView8, textView9, textView10, textView11;
     private FusedLocationProviderClient fusedLocationProviderClient;
+    LoginActivity plan = new LoginActivity();
+    private int id = plan.getId1();
+    ConexionSQLHelper conn= new ConexionSQLHelper(this);
+    SQLiteDatabase db = conn.getReadableDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +85,21 @@ public class MapsActivity extends AppCompatActivity {
                 if (location != null) {
                     Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                     try {
+                        ConexionSQLHelper conn = new ConexionSQLHelper(getApplicationContext());
+                        SQLiteDatabase db = conn.getWritableDatabase();
+                        long idResultante=0;
                         List <Address> address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        ContentValues values = new ContentValues();
                         textView5.setText(address.get(0).getLatitude() + "");
                         textView7.setText(address.get(0).getLongitude() + "");
                         textView9.setText(address.get(0).getCountryName() + "");
                         textView11.setText(address.get(0).getAddressLine(0) + "");
+                        db.execSQL("Insert into Conductor (pais) VALUES ("+address.get(0).getCountryName()+") WHERE id = "+id);
+                        db.execSQL("Insert into Conductor (calle) VALUES ("+address.get(0).getAddressLine(0)+") WHERE id = "+id);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         });

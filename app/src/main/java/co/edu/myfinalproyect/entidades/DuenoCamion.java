@@ -8,14 +8,18 @@ public class DuenoCamion {
     private String correo;
     private String contraseña;
     private String Fecha;
+    private String sexo;
+    private String trabajo;
 
-    public DuenoCamion(int id, String nombre, String apellido, String correo, String contraseña, String fecha) {
+    public DuenoCamion(int id, String nombre, String apellido, String correo, String contraseña, String fecha, String sexo, String trabajo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contraseña = contraseña;
         this.Fecha = fecha;
+        this.sexo = sexo;
+        this.trabajo = trabajo;
     }
 
     public int getId() {

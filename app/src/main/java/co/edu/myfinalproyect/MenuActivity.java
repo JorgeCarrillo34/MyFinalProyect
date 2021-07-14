@@ -73,12 +73,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void Email(View c){
-        Intent intent = new Intent(getApplicationContext(), NUEVOEMAIL.class);
+        Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
         startActivity(intent);
     }
 
     public void onSendMaps1(View v){
-        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), UbicacionActivity.class);
         startActivity(intent);
     }
 

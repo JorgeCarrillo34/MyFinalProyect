@@ -18,6 +18,16 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnlogin;
     ConexionSQLHelper conn= new ConexionSQLHelper(this);
+    SQLiteDatabase db = conn.getReadableDatabase();
+    private int id1;
+
+
+    public LoginActivity() {
+    }
+
+    public int getId1() {
+        return id1;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +45,35 @@ public class LoginActivity extends AppCompatActivity {
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 EditText id = (EditText) findViewById(R.id.edit_id);
                 EditText pass = (EditText) findViewById(R.id.edit_Password);
-                try {
-                    SQLiteDatabase db = conn.getReadableDatabase();
-                    Cursor cursor = conn.consultarUsuPas(db, id.getText().toString(), pass.getText().toString());
-                    if (cursor.getCount() > 0) {
-                        Toast.makeText(getApplicationContext(), "Si se encuentra", Toast.LENGTH_LONG).show();
 
-                        /*
-                        if ((db.execSQL("Select trabajo from db_transporte where id = " +id+ "  AND trabajo = 'Conductor' ")).equals("Conductor")){
+                try {
+                    Cursor cursor = conn.getData(id.getId());
+                    int contra = cursor.getColumnIndex("contraseña"); //index de la columna contraseña
+                    String con1=cursor.getString(contra);//deme el dato de esa columna
+
+                    if (cursor.moveToFirst()==false) {
+                        Toast.makeText(getApplicationContext(), "No se encuentran datos, registrate", Toast.LENGTH_LONG).show();
+                    }else if(con1.equals(pass.getText().toString())){ //si la contra de la bd es igual a la que ingreso el user
+                        int NumTrabajo = cursor.getColumnIndex("trabajo");
+                        String trab=cursor.getString(NumTrabajo);
+                        id1=id.getId();
+
+                        if (trab.equals("Conductor")){
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                             startActivity(intent);
-
-                        } else if(selectedUser.equals("Dueño De Carga")){
+                        } else if(trab.equals("Dueño de Carga")){
                             Intent intent = new Intent(getApplicationContext(), DuenoDeCargaMainActivity.class);
                             startActivity(intent);
                         } else{
                             Intent intent = new Intent(getApplicationContext(), PropietarioCamionActivity.class);
                             startActivity(intent);
                         }
-                        */
-                    } else {
-                        Log.v("//////////////", " " + cursor.getCount());
-                        Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
+                        cursor.close();
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Contraseña o id incorrecto", Toast.LENGTH_LONG).show();
                     }
                     id.setText("");
                     pass.setText("");
@@ -67,19 +82,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-        if (selectedUser.equals("Conductor")) {
-            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-            startActivity(intent);
-
-        } else if (selectedUser.equals("Dueño De Carga")) {
-            Intent intent = new Intent(getApplicationContext(), DuenoDeCargaMainActivity.class);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(getApplicationContext(), PropietarioCamionActivity.class);
-            startActivity(intent);
-
-        }
     }
 
     public void registro1(View view){

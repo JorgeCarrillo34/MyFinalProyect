@@ -9,8 +9,12 @@ public class Conductor {
     private String contraseña;
     private String Fecha;
     private String sexo;
+    private String trabajo;
+    private String calle;
+    private String pais;
 
-    public Conductor(int id, String nombre, String apellido, String correo, String contraseña, String fecha, String sexo) {
+
+    public Conductor(int id, String nombre, String apellido, String correo, String contraseña, String fecha, String sexo, String trabajo ) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -18,6 +22,42 @@ public class Conductor {
         this.contraseña = contraseña;
         this.Fecha = fecha;
         this.sexo=sexo;
+        this.calle=calle;
+        this.pais=pais;
+        this.trabajo=trabajo;
+    }
+
+    public Conductor(String calle, String pais) {
+        this.calle = calle;
+        this.pais = pais;
+    }
+
+    public Conductor() {
+
+    }
+
+    public String getTrabajo() {
+        return trabajo;
+    }
+
+    public void setTrabajo(String trabajo) {
+        this.trabajo = trabajo;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     public int getId() {

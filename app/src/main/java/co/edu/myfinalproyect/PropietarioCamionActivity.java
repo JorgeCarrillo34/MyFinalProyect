@@ -7,11 +7,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import co.edu.myfinalproyect.entidades.Conductor;
 
 public class PropietarioCamionActivity extends AppCompatActivity {
 
@@ -30,8 +33,9 @@ public class PropietarioCamionActivity extends AppCompatActivity {
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
     }
     public void onSendMaps1(View v){
-        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, UbicacionActivity.class);
+        startActivity(intent2);
+
     }
 
     @Override
