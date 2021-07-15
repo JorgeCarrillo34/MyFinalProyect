@@ -25,6 +25,7 @@
 
     <ListView
         android:id="@+id/listViewCiudadorigen"
+        android:onClick="volverTipoCarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
