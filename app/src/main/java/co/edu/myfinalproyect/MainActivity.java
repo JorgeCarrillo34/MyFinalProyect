@@ -45,21 +45,6 @@ public class MainActivity extends AppCompatActivity {
         campoContraseña=(EditText) findViewById(R.id.contra);
         confi=(EditText) findViewById(R.id.contraConfirm);
 
-        trabajo=(Spinner)findViewById(R.id.spinnerRegistro);
-        selectedUser = String.valueOf(trabajo.getSelectedItem());
-        Log.v("Trabajo////", selectedUser);
-
-
-        if (selectedUser.equals("Conductor")) {
-            Conductor cond = new Conductor(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
-                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
-        } else if (selectedUser.equals("Dueño De Carga")) {
-            DuenoCarga duenCar = new DuenoCarga(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
-                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
-        } else {
-            DuenoCamion duenCam = new DuenoCamion(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
-                    campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
-        }
     }
 
     public void onRadioButtonClicked(View view){
@@ -87,10 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void registroUsuario(View view){
 
+        trabajo=(Spinner)findViewById(R.id.spinnerRegistro);
+        selectedUser = trabajo.getSelectedItem().toString();
+        Log.v("Trabajo////", selectedUser);
         registrarUsuarios();
-
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
 
     }
 
@@ -100,12 +87,15 @@ public class MainActivity extends AppCompatActivity {
             ConexionSQLHelper conn = new ConexionSQLHelper(this);
             SQLiteDatabase db = conn.getWritableDatabase();
             long idResultante=0;
+            trabajo=(Spinner)findViewById(R.id.spinnerRegistro);
+            selectedUser = trabajo.getSelectedItem().toString();
 
             if (campoId.getText().toString().equals("") || campoNombre.getText().toString().equals("") || campoApellido.getText().toString().equals("")
             || campoCorreo.getText().toString().equals("") || campoFecha.getText().toString().equals("") || campoContraseña.getText().toString().equals("")
             || sex.equals("") || selectedUser.equals("") || confi.equals("")){
                 Toast.makeText(getApplicationContext(), "Debe ingresar datos", Toast.LENGTH_LONG).show();
             } else if(campoContraseña.getText().toString().equals(confi.getText().toString())){
+
 
                 ContentValues values = new ContentValues();
                 values.put(Utilidades.CAMPO_ID, campoId.getText().toString());
@@ -119,10 +109,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (selectedUser.equals("Conductor")) {
                     idResultante = db.insert(Utilidades.TABLA_CONDUCTOR, Utilidades.CAMPO_ID, values);
+                    Conductor cond = new Conductor(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                            campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
                 } else if (selectedUser.equals("Dueño De Carga")) {
                     idResultante = db.insert(Utilidades.TABLA_DUENOCARGA, Utilidades.CAMPO_ID, values);
+                    DuenoCarga duenCar = new DuenoCarga(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                            campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
                 } else {
                     idResultante = db.insert(Utilidades.TABLA_DUENOCAMION, Utilidades.CAMPO_ID, values);
+                    DuenoCamion duenCam = new DuenoCamion(campoId.getId(),campoNombre.getText().toString(),campoApellido.getText().toString(),
+                            campoCorreo.getText().toString(),campoFecha.getText().toString(),campoContraseña.getText().toString(),sex,selectedUser);
                 }
 
                 if (idResultante > 0) {

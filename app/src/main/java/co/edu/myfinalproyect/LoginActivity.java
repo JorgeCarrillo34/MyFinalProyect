@@ -19,7 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnlogin;
 
     private int id1;
-
+    Spinner trabajo;
+    String selectedUser;
 
     public LoginActivity() {
     }
@@ -51,33 +52,49 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     ConexionSQLHelper conn= new ConexionSQLHelper(getApplicationContext());
                     SQLiteDatabase db = conn.getReadableDatabase();
-                    Cursor cursor = conn.getData(id2);
-                    int contra = cursor.getColumnIndex("contraseña"); //index de la columna contraseña
-                    String con1=cursor.getString(contra);//deme el dato de esa columna
-
-                    if (cursor.moveToFirst()==false) {
-                        Toast.makeText(getApplicationContext(), "No se encuentran datos, registrate", Toast.LENGTH_LONG).show();
-                    }else if(con1.equals(pass.getText().toString())){ //si la contra de la bd es igual a la que ingreso el user
-                        int NumTrabajo = cursor.getColumnIndex("trabajo");
-                        String trab=cursor.getString(NumTrabajo);
-                        id1=id.getId();
-                        Log.v("Id despues",id.getText().toString());
-                        if (trab.equals("Conductor")){
-                            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                            startActivity(intent);
-                        } else if(trab.equals("Dueño de Carga")){
-                            Intent intent = new Intent(getApplicationContext(), DuenoDeCargaMainActivity.class);
-                            startActivity(intent);
-                        } else{
-                            Intent intent = new Intent(getApplicationContext(), PropietarioCamionActivity.class);
-                            startActivity(intent);
+                    trabajo=(Spinner)findViewById(R.id.spinner);
+                    selectedUser = trabajo.getSelectedItem().toString();
+                        if (selectedUser.equals("Dueño De Carga")){
+                            selectedUser = "DuenoCarga";
+                        }else if(selectedUser.equals("Dueño De Camion")){
+                            selectedUser = "DuenoCamion";
                         }
-                        cursor.close();
-                    }else {
-                        Toast.makeText(getApplicationContext(), "Contraseña o id incorrecto", Toast.LENGTH_LONG).show();
+                    Log.v("TRABAJO///",selectedUser);
+                    Cursor cursor = conn.getData(id2, selectedUser);
+
+                    if (cursor.moveToFirst()){
+                        do {
+                            int contra = cursor.getColumnIndex("contraseña"); //index de la columna contraseña
+                            String con1=cursor.getString(contra);//deme el dato de esa columna
+                            Log.v("CONTRASEÑA///",con1);
+                            int NumTrabajo = cursor.getColumnIndex("trabajo");
+                            String trab = cursor.getString(NumTrabajo);
+                            //if (cursor.moveToFirst()==false) {
+                            //Toast.makeText(getApplicationContext(), "No se encuentran datos, registrate", Toast.LENGTH_LONG).show();
+                            // }else
+                            if(con1.equals(pass.getText().toString())) { //si la contra de la bd es igual a la que ingreso el user
+
+                                id1 = id.getId();
+                                Log.v("Id despues", id.getText().toString());
+                                if (selectedUser.equals("Conductor")) {
+                                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                    startActivity(intent);
+                                } else if (selectedUser.equals("DuenoCarga")) {
+                                    Intent intent = new Intent(getApplicationContext(), DuenoDeCargaMainActivity.class);
+                                    startActivity(intent);
+                                } else if (selectedUser.equals("DuenoCamion")){
+                                    Intent intent = new Intent(getApplicationContext(), PropietarioCamionActivity.class);
+                                    startActivity(intent);
+                                }
+                                cursor.close();
+                            }else {
+                                Toast.makeText(getApplicationContext(), "Contraseña, id incorrecto o usuario incorrecto", Toast.LENGTH_LONG).show();
+                            }
+                            id.setText("");
+                            pass.setText("");
+                        }while(cursor.moveToNext());
                     }
-                    id.setText("");
-                    pass.setText("");
+
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

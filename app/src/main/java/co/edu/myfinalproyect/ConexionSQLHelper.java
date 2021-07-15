@@ -35,17 +35,11 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public Cursor getData (int id) {
+    public Cursor getData (int id, String trabajo) {
 
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from 'db_transporte' where id like "+id+"",null);
+        Cursor cursor = db.rawQuery("select * from "+trabajo+" where id like "+id+"",null);
         return cursor;
     }
 
-    public Cursor consultarUsuPas (SQLiteDatabase db, String usu, String pass) throws SQLException{
-        Cursor mcursor=null;
-        mcursor = db.query(DATABASE_N,new String[]{"id","contraseña"},
-                "id like '" +usu+ "' " + "and contraseña like '" +pass+ "'", null,null,null,null,null);
-        return mcursor;
-    }
 }
