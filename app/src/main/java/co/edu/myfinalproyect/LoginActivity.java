@@ -17,8 +17,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     Button btnlogin;
-    ConexionSQLHelper conn= new ConexionSQLHelper(this);
-    SQLiteDatabase db = conn.getReadableDatabase();
+
     private int id1;
 
 
@@ -40,17 +39,19 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void registro(View view) {
-        Spinner usuario = (Spinner) findViewById(R.id.spinner);
-        String selectedUser = String.valueOf(usuario.getSelectedItem());
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 EditText id = (EditText) findViewById(R.id.edit_id);
                 EditText pass = (EditText) findViewById(R.id.edit_Password);
-
+                Log.v("Id antes",id.getText().toString());
+                //Log.v("Id antes2","" + id.getId());
+                int id2 = Integer.parseInt(id.getText().toString());
                 try {
-                    Cursor cursor = conn.getData(id.getId());
+                    ConexionSQLHelper conn= new ConexionSQLHelper(getApplicationContext());
+                    SQLiteDatabase db = conn.getReadableDatabase();
+                    Cursor cursor = conn.getData(id2);
                     int contra = cursor.getColumnIndex("contraseña"); //index de la columna contraseña
                     String con1=cursor.getString(contra);//deme el dato de esa columna
 
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         int NumTrabajo = cursor.getColumnIndex("trabajo");
                         String trab=cursor.getString(NumTrabajo);
                         id1=id.getId();
-
+                        Log.v("Id despues",id.getText().toString());
                         if (trab.equals("Conductor")){
                             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                             startActivity(intent);

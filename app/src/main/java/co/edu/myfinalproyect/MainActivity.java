@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
         campoFecha=(EditText) findViewById(R.id.fecha);
         campoContraseña=(EditText) findViewById(R.id.contra);
         confi=(EditText) findViewById(R.id.contraConfirm);
+
         trabajo=(Spinner)findViewById(R.id.spinnerRegistro);
         selectedUser = String.valueOf(trabajo.getSelectedItem());
+        Log.v("Trabajo////", selectedUser);
 
 
         if (selectedUser.equals("Conductor")) {

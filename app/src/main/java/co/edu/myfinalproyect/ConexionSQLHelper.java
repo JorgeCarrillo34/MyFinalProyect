@@ -38,7 +38,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
     public Cursor getData (int id) {
 
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from "  +DATABASE_N+ "where id="+id+"",null);
+        Cursor cursor = db.rawQuery("select * from 'db_transporte' where id like "+id+"",null);
         return cursor;
     }
 
