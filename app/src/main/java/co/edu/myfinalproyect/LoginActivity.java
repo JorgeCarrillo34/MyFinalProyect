@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import co.edu.myfinalproyect.entidades.Conductor;
+import co.edu.myfinalproyect.entidades.DuenoCamion;
+import co.edu.myfinalproyect.entidades.DuenoCarga;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button btnlogin;
@@ -40,6 +44,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void registro(View view) {
+
+        /**
+        Spinner usuario = (Spinner) findViewById(R.id.spinner);
+        String selectedUser = String.valueOf(usuario.getSelectedItem());
+        **/
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -100,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     public void registro1(View view){

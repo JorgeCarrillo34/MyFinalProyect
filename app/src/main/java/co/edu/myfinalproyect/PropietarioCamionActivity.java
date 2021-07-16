@@ -26,7 +26,7 @@ public class PropietarioCamionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propietario_camion);
 
-        toolbar=findViewById(R.id.toolbar);
+        toolbar=findViewById(R.id.toolbarPropietario);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar=getSupportActionBar();
@@ -49,7 +49,9 @@ public class PropietarioCamionActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id==R.id.opcion1){
-            Toast.makeText(this, "FUTURAS ACTUALIZACIONES", Toast.LENGTH_SHORT).show();
+            Intent intent3 = new Intent(this, solicitudesCargaPropietario.class);
+            startActivity(intent3);
+            Toast.makeText(this, "Conoce tus solicitudes de carga", Toast.LENGTH_SHORT).show();
         }else if(id==R.id.opcion2){
             Intent intent2 = new Intent(this, AjustesActivity.class);
             startActivity(intent2);

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,12 +18,15 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
 
     ListView cargaGeneral;
     Toolbar toolbar;
+    Button botonEnviar;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carga_general_main);
         toolbar=findViewById(R.id.toolbar);
+        botonEnviar=findViewById(R.id.btnEnviarSolicitud);
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
@@ -47,10 +51,15 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
     }
+
+    public void enviarSolicitud (View view){
+        Intent intent = new Intent(CargaGeneralMainActivity.this, DatoSolicitudCarga.class);
+        startActivity(intent);
+    }
+
+
+
+
+
 }

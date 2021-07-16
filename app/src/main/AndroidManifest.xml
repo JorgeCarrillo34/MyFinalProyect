@@ -16,7 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFinalProyect">
-        <activity android:name=".DatoSolicitudCarga"></activity>
+        <activity android:name=".pantallaAsignacionCarga"></activity>
+        <activity android:name=".listasCamioneros" />
+        <activity android:name=".datosCarga" />
+        <activity android:name=".solicitudesCargaPropietario" />
+        <activity android:name=".enviarSolicitudActivity" />
+        <activity android:name=".DatoSolicitudCarga" />
         <activity android:name=".UbicacionActivity" />
         <activity android:name=".NUEVOEMAIL" />
         <activity android:name=".EmailActivity" />

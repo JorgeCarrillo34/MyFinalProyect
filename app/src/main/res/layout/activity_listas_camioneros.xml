@@ -5,29 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CiudadOrigenMainActivity">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:scrollbarSize="12dp"
+    tools:context=".listasCamioneros">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SELECCIONA TU CIUDAD DE ORIGEN"
-        android:textSize="20sp"
-        android:layout_marginBottom="30dp"
-        android:textAlignment="center"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Selecciona el camionero al cual le quieres asignar la carga" />
+
 
     <ListView
-        android:id="@+id/listViewCiudadorigen"
+        android:id="@+id/listaCamioneros"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
 
 </LinearLayout>
