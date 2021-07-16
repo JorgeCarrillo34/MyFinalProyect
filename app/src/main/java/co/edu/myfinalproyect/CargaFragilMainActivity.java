@@ -19,6 +19,7 @@ public class CargaFragilMainActivity extends AppCompatActivity {
 
     ListView cargaFragil;
     Toolbar toolbar;
+    String dato;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -30,6 +31,7 @@ public class CargaFragilMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        dato = getIntent().getStringExtra("dato");
 
         cargaFragil = (ListView) findViewById(R.id.listViewCargaFragil);
 
@@ -44,9 +46,11 @@ public class CargaFragilMainActivity extends AppCompatActivity {
 
                 if(position == 0){
                     Intent intent = new Intent(CargaFragilMainActivity.this, CiudadOrigenMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }else if (position==1){
                     Intent intent = new Intent(CargaFragilMainActivity.this, CiudadDestinoMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }
             }

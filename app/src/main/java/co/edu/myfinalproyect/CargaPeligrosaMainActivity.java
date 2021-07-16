@@ -16,6 +16,7 @@ public class CargaPeligrosaMainActivity extends AppCompatActivity {
 
     ListView cargaPeligrosa;
     Toolbar toolbar;
+    String dato;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class CargaPeligrosaMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        dato = getIntent().getStringExtra("dato");
 
         cargaPeligrosa = (ListView) findViewById(R.id.listViewCargaPeligrosa);
 
@@ -39,9 +41,11 @@ public class CargaPeligrosaMainActivity extends AppCompatActivity {
 
                 if(position == 0){
                     Intent intent = new Intent(CargaPeligrosaMainActivity.this, CiudadOrigenMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }else if (position==1){
                     Intent intent = new Intent(CargaPeligrosaMainActivity.this, CiudadDestinoMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }
             }

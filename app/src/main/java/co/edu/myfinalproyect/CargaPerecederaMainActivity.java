@@ -16,6 +16,8 @@ public class CargaPerecederaMainActivity extends AppCompatActivity {
 
     ListView cargaPerecedera;
     Toolbar toolbar;
+    String dato;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class CargaPerecederaMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        dato = getIntent().getStringExtra("dato");
 
         cargaPerecedera = (ListView) findViewById(R.id.listViewCargaPerecedera);
 
@@ -39,9 +42,11 @@ public class CargaPerecederaMainActivity extends AppCompatActivity {
 
                 if(position == 0){
                     Intent intent = new Intent(CargaPerecederaMainActivity.this, CiudadOrigenMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }else if (position==1){
                     Intent intent = new Intent(CargaPerecederaMainActivity.this, CiudadDestinoMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }
             }

@@ -18,7 +18,8 @@ import co.edu.myfinalproyect.entidades.Conductor;
 
 public class PropietarioCamionActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
+    private String dato;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -31,11 +32,13 @@ public class PropietarioCamionActivity extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+
+        dato = getIntent().getStringExtra("dato");
     }
     public void onSendMaps1(View v){
         Intent intent2 = new Intent(this, UbicacionActivity.class);
+        intent2.putExtra("dato",dato);
         startActivity(intent2);
-
     }
 
     @Override

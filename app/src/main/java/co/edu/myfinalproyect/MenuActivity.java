@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class MenuActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    String dato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        dato = getIntent().getStringExtra("dato");
     }
 
     @Override
@@ -49,6 +51,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onSendMaps0(View view){
+        //Calle 31 A # 65 F 30, Medellín, Antioquia
 
         Uri.Builder builder=new Uri.Builder();
         builder.scheme("https")
@@ -57,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
                 .appendPath("dir")
                 .appendPath("")
                 .appendQueryParameter("api","1")
-                .appendQueryParameter("destination",4.632339710 + "," + -74.065350);
+                .appendQueryParameter("destination",6.234172 + "," + -75.586135);
         String url= builder.build().toString();
         Log.d("Directions", url);
         Intent intent= new Intent(Intent.ACTION_VIEW);
@@ -66,7 +69,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onSendMaps(View v){
-        Uri uri=Uri.parse("geo:0,0?q=restaurants");
+        /// DOS PUNTOS EN MAPS
+        Uri uri=Uri.parse("geo:");
         Intent intent= new Intent(Intent.ACTION_VIEW,uri);
         intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);
@@ -78,7 +82,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onSendMaps1(View v){
-        Intent intent = new Intent(getApplicationContext(), UbicacionActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        intent.putExtra("dato",dato);
         startActivity(intent);
     }
 

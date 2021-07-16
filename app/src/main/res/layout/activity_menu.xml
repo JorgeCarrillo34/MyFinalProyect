@@ -52,15 +52,9 @@
         android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="55dp"
-        android:onClick="onSendMaps"
+        android:layout_marginTop="60dp"
+        android:onClick="onSendMaps0"
         android:text="INICIAR RECORRIDO"
-        app:layout_constraintBottom_toTopOf="@+id/button15"
-        app:layout_constraintEnd_toStartOf="@+id/textView20"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -92,60 +86,36 @@
         android:id="@+id/textView20"
         android:layout_width="187dp"
         android:layout_height="66dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Comparte tu ubicacion para que el dueño de la carga pueda seguir su carga"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toEndOf="@+id/button13"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="180dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:text="Al momento de llegar a tu destino final dejaras de compartir tu ubicacion al dueño de la carga"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="183dp"
         android:layout_height="66dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="69dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
         android:text="Indica tus coordenadas actuales a el dueño de la carga enviada"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="184dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="En caso de cierres, bloqueos, accidentes, derrumbes, notifica al propietario del camion y dueño de carga"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="178dp"
         android:layout_height="69dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="188dp"
         android:text="Reporta por un cambio en el recorrido para indicar que tomaras rutas alternas a la planeaada"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

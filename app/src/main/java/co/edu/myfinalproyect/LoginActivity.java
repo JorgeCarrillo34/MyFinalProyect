@@ -3,6 +3,7 @@ package co.edu.myfinalproyect;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import co.edu.myfinalproyect.*;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,14 +24,14 @@ public class LoginActivity extends AppCompatActivity {
     Button btnlogin;
 
     private int id1;
-    Spinner trabajo;
-    String selectedUser;
+    private Spinner trabajo;
+    private String selectedUser;
 
-    public LoginActivity() {
-    }
+    MapsActivity map;
+    //NO LLEVA EL ID
 
-    public int getId1() {
-        return id1;
+    public String getSelectedUser() {
+        return selectedUser;
     }
 
     @Override
@@ -42,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     public void registro(View view) {
 
         /**
@@ -53,11 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+
                 EditText id = (EditText) findViewById(R.id.edit_id);
                 EditText pass = (EditText) findViewById(R.id.edit_Password);
                 Log.v("Id antes",id.getText().toString());
                 //Log.v("Id antes2","" + id.getId());
+
                 int id2 = Integer.parseInt(id.getText().toString());
+
                 try {
                     ConexionSQLHelper conn= new ConexionSQLHelper(getApplicationContext());
                     SQLiteDatabase db = conn.getReadableDatabase();
@@ -68,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                         }else if(selectedUser.equals("Dueño De Camion")){
                             selectedUser = "DuenoCamion";
                         }
+
                     Log.v("TRABAJO///",selectedUser);
                     Cursor cursor = conn.getData(id2, selectedUser);
 
@@ -78,21 +82,24 @@ public class LoginActivity extends AppCompatActivity {
                             Log.v("CONTRASEÑA///",con1);
                             int NumTrabajo = cursor.getColumnIndex("trabajo");
                             String trab = cursor.getString(NumTrabajo);
-                            //if (cursor.moveToFirst()==false) {
-                            //Toast.makeText(getApplicationContext(), "No se encuentran datos, registrate", Toast.LENGTH_LONG).show();
-                            // }else
+
                             if(con1.equals(pass.getText().toString())) { //si la contra de la bd es igual a la que ingreso el user
 
-                                id1 = id.getId();
+                                id1 = Integer.parseInt(id.getText().toString());
+
+                                Log.v("ID///",id1+"");
                                 Log.v("Id despues", id.getText().toString());
                                 if (selectedUser.equals("Conductor")) {
                                     Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                    intent.putExtra("dato",id1+"");
                                     startActivity(intent);
                                 } else if (selectedUser.equals("DuenoCarga")) {
                                     Intent intent = new Intent(getApplicationContext(), DuenoDeCargaMainActivity.class);
+                                    intent.putExtra("dato",id1+"");
                                     startActivity(intent);
                                 } else if (selectedUser.equals("DuenoCamion")){
                                     Intent intent = new Intent(getApplicationContext(), PropietarioCamionActivity.class);
+                                    intent.putExtra("dato",id1+"");
                                     startActivity(intent);
                                 }
                                 cursor.close();

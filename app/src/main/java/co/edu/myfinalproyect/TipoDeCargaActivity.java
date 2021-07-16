@@ -20,6 +20,7 @@ public class TipoDeCargaActivity extends AppCompatActivity {
 
     ListView listaCarga;
     Toolbar toolbar;
+    String dato;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -30,6 +31,7 @@ public class TipoDeCargaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        dato = getIntent().getStringExtra("dato");
 
         listaCarga = (ListView) findViewById(R.id.listViewId);
 
@@ -45,26 +47,31 @@ public class TipoDeCargaActivity extends AppCompatActivity {
 
                 if(position == 0){
                     Intent intent = new Intent(TipoDeCargaActivity.this, CargaGeneralMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
 
                     Toast.makeText(parent.getContext(), "Seleccionaste " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }else if (position==1){
                     Intent intent = new Intent(TipoDeCargaActivity.this, CargaGranelMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
 
                     Toast.makeText(parent.getContext(), "Seleccionaste " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }else if (position==2){
                     Intent intent = new Intent(TipoDeCargaActivity.this, CargaPerecederaMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
 
                     Toast.makeText(parent.getContext(), "Seleccionaste " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }else if (position==3){
                     Intent intent = new Intent(TipoDeCargaActivity.this, CargaFragilMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
 
                     Toast.makeText(parent.getContext(), "Seleccionaste " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }else if (position==4){
                     Intent intent = new Intent(TipoDeCargaActivity.this, CargaPeligrosaMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
 
                     Toast.makeText(parent.getContext(), "Seleccionaste " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();

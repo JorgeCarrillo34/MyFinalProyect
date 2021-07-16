@@ -19,23 +19,23 @@ public class Utilidades {
     public static final String CAMPO_trabajo="trabajo";
     public static final String CAMPO_origen="origen";
     public static final String CAMPO_destino="destino";
-    public static final String CAMPO_calle="calle";
-    public static final String CAMPO_pais="pais";
+    public static final String CAMPO_latitud="latitud";
+    public static final String CAMPO_longitud="longitud";
+    public static final String CAMPO_lugar="lugar";
 
 
     public static final String CREAR_TABLA_CONDUCTOR="CREATE TABLE "+TABLA_CONDUCTOR+
             " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido
             +" TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
-            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT,  "+CAMPO_calle+" TEXT, "+CAMPO_pais+" TEXT )" ;
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT,  "+CAMPO_latitud+" DOUBLE, "+CAMPO_longitud+" DOUBLE )" ;
     public static final String CREAR_TABLA_DUENOCARGA="CREATE TABLE "+TABLA_DUENOCARGA+
             " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
             " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
-            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT," +CAMPO_origen+
-            " TEXT,"+CAMPO_destino+" TEXT ) ";
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT,  "+CAMPO_latitud+" DOUBLE, "+CAMPO_longitud+" DOUBLE, "+CAMPO_lugar+" TEXT )";
     public static final String CREAR_TABLA_DUENOCAMION="CREATE TABLE "+TABLA_DUENOCAMION+
             " ("+CAMPO_ID+" INTEGER PRIMARY KEY, "+CAMPO_nombre+" TEXT, "+CAMPO_apelllido+
             " TEXT, "+CAMPO_correo+" TEXT, "+CAMPO_Fecha+" TEXT, "+CAMPO_contraseña+
-            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT )";
+            " TEXT, "+CAMPO_sexo+" TEXT, "+CAMPO_trabajo+" TEXT, "+CAMPO_latitud+" DOUBLE, "+CAMPO_longitud+" DOUBLE )" ;
 
 
 

@@ -9,13 +9,16 @@ import co.edu.myfinalproyect.LoginActivity.*;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,10 +41,8 @@ public class MapsActivity extends AppCompatActivity {
     private Button bt_locatio;
     private TextView textView4, textView5, textView6, textView7, textView8, textView9, textView10, textView11;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    LoginActivity plan = new LoginActivity();
-    private int id = plan.getId1();
-    ConexionSQLHelper conn= new ConexionSQLHelper(this);
-    SQLiteDatabase db = conn.getReadableDatabase();
+    LoginActivity plan;
+    private String dato;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +58,15 @@ public class MapsActivity extends AppCompatActivity {
         textView9 = findViewById(R.id.textView9);
         textView10 = findViewById(R.id.textView10);
         textView11 = findViewById(R.id.textView11);
-
+        dato = getIntent().getStringExtra("dato");
+        Log.v("ID DATOO////////",dato+" EXITO");
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         bt_locatio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 getLocacion();
+                //Log.v("ID ONCLICK////////",dato+" EXITO");
             }
         });
     }
@@ -87,16 +90,15 @@ public class MapsActivity extends AppCompatActivity {
                     try {
                         ConexionSQLHelper conn = new ConexionSQLHelper(getApplicationContext());
                         SQLiteDatabase db = conn.getWritableDatabase();
-                        long idResultante=0;
+
                         List <Address> address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                        ContentValues values = new ContentValues();
                         textView5.setText(address.get(0).getLatitude() + "");
                         textView7.setText(address.get(0).getLongitude() + "");
                         textView9.setText(address.get(0).getCountryName() + "");
                         textView11.setText(address.get(0).getAddressLine(0) + "");
-                        db.execSQL("Insert into Conductor (pais) VALUES ("+address.get(0).getCountryName()+") WHERE id = "+id);
-                        db.execSQL("Insert into Conductor (calle) VALUES ("+address.get(0).getAddressLine(0)+") WHERE id = "+id);
-
+                        Log.v("ID ubicacion///",dato+"");
+                        ///// COMO GUARDAR ESTO EN LA BD CON EL ID
+                        db.execSQL("UPDATE Conductor SET latitud = '"+address.get(0).getLatitude()+"', longitud = '"+address.get(0).getLongitude()+"' where id like "+dato);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -108,5 +110,43 @@ public class MapsActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MapsActivity.this ,new String[] {Manifest.permission.ACCESS_FINE_LOCATION},44);
         }
 
+    }
+
+    public void onSendMaps0(View view) {
+        ConexionSQLHelper conn = new ConexionSQLHelper(getApplicationContext());
+        SQLiteDatabase db = conn.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * from Conductor where id like "+dato,null);
+        String lati="";
+        String longi="";
+        if (cursor.moveToFirst()){
+            do {
+         lati = cursor.getString(cursor.getColumnIndex("latitud"));
+         longi = cursor.getString(cursor.getColumnIndex("longitud"));
+            }while(cursor.moveToNext());
+        }
+        db.execSQL("UPDATE DuenoCamion SET latitud = '"+lati+"', longitud = '"+longi+"' where id like "+15);//falta de logica
+        db.execSQL("UPDATE DuenoCarga SET latitud = '"+lati+"', longitud = '"+longi+"' where id like "+15);
+
+        Uri uri=Uri.parse("geo:"+ lati +","+ longi);
+        Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+        intent.setPackage("com.google.android.apps.maps");
+        startActivity(intent);
+
+
+
+/*
+        Uri.Builder builder=new Uri.Builder();
+        builder.scheme("https")
+                .authority("www.google.com")
+                .appendPath("maps")
+                .appendPath("dir")
+                .appendPath("")
+                .appendQueryParameter("api","1")
+                .appendQueryParameter("destination",lati + "," + longi);
+        String url= builder.build().toString();
+        Log.d("Directions", url);
+        Intent intent= new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);*/
     }
 }

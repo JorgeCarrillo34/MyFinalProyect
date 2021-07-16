@@ -19,6 +19,7 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
     ListView cargaGeneral;
     Toolbar toolbar;
     Button botonEnviar;
+    String dato;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -30,6 +31,7 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        dato = getIntent().getStringExtra("dato");
 
         cargaGeneral = (ListView) findViewById(R.id.listViewCargaGeneral);
 
@@ -44,9 +46,11 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
 
                 if(position == 0){
                     Intent intent = new Intent(CargaGeneralMainActivity.this, CiudadOrigenMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }else if (position==1){
                     Intent intent = new Intent(CargaGeneralMainActivity.this, CiudadDestinoMainActivity.class);
+                    intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }
             }

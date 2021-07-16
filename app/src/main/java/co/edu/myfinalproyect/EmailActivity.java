@@ -2,6 +2,7 @@ package co.edu.myfinalproyect;
 
 import  androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,19 +31,21 @@ public class EmailActivity extends AppCompatActivity {
                         EditText subEt = (EditText) findViewById(R.id.box3);
                         EditText bodyEt = (EditText) findViewById(R.id.box4);
 
-                        String emailFrom = fromEt.toString();
-                        String emailTo = toEt.toString();
-                        String emailSubj = subEt.toString();
-                        String emailBody = bodyEt.toString();
-                        Log.v("Error ///////////" , emailFrom);
+                        String emailFrom = fromEt.getText().toString();
+                        String emailTo = toEt.getText().toString();
+                        String emailSubj = subEt.getText().toString();
+                        String emailBody = bodyEt.getText().toString();
+                        Log.v("TO ///////////" , emailFrom);
+
                         try {
                             GMailSender gMailSender = new GMailSender(emailFrom, emailPassword);
-                            gMailSender.sendMail(emailFrom,emailTo,emailSubj,emailBody);
+                            gMailSender.sendMail(emailSubj,emailBody,emailFrom,emailTo);
                         }catch (Exception e){
                             e.printStackTrace();
+                            Log.v("Error ///////////" , e.getMessage());
                         }
                     }
-                });
+                }).start();
             }
         });
     }

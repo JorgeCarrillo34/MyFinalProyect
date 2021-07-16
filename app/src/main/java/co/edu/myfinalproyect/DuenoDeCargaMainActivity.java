@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class DuenoDeCargaMainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    String dato;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -27,6 +28,8 @@ public class DuenoDeCargaMainActivity extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+
+        dato = getIntent().getStringExtra("dato");
     }
 
     public void onSendMaps1(View v){
@@ -60,7 +63,12 @@ public class DuenoDeCargaMainActivity extends AppCompatActivity {
     //llevarlo a la pantalla para seleccionar el formulario de solicitud de una carga
     public void solicitudCarga(View view){
         Intent intent = new Intent(this, TipoDeCargaActivity.class);
+        intent.putExtra("dato",dato+"");
         startActivity(intent);
     }
 
+    public void onSendMaps12(View view) {
+        Intent intent = new Intent(getApplicationContext(), UbicacionActivity.class);
+        startActivity(intent);
+    }
 }

@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import co.edu.myfinalproyect.utilidades.Utilidades;
 
 
-public class ConexionSQLHelper extends SQLiteOpenHelper{
+public class    ConexionSQLHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_V=10;
+    public static final int DATABASE_V=13;
     public static final String DATABASE_N="db_transporte";
 
     public ConexionSQLHelper(@Nullable Context context) {
@@ -41,5 +41,10 @@ public class ConexionSQLHelper extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery("select * from "+trabajo+" where id like "+id+"",null);
         return cursor;
     }
+
+   // public String location (){
+
+       // return ;
+    //}
 
 }
