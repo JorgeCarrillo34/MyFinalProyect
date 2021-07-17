@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onSendMaps0(View view){
-        //Calle 31 A # 65 F 30, Medellín, Antioquia
+
 
         Uri.Builder builder=new Uri.Builder();
         builder.scheme("https")

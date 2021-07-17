@@ -50,7 +50,7 @@ public class CargaGeneralMainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else if (position==1){
                     Intent intent = new Intent(CargaGeneralMainActivity.this, CiudadDestinoMainActivity.class);
-                    intent.putExtra("dato",dato+"");
+                   // intent.putExtra("dato",dato+"");
                     startActivity(intent);
                 }
             }

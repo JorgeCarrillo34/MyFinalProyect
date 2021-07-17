@@ -17,18 +17,18 @@ public class CiudadOrigenMainActivity extends AppCompatActivity {
 
     ListView ciudadorigen;
     String dato;
-    EditText direc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ciudad_origen_main);
         dato = getIntent().getStringExtra("dato");
-        direc = (EditText) findViewById(R.id.direccion);
 
-        ConexionSQLHelper conn = new ConexionSQLHelper(getApplicationContext());
+
+       /* ConexionSQLHelper conn = new ConexionSQLHelper(getApplicationContext());
         SQLiteDatabase db = conn.getWritableDatabase();
 
-        db.execSQL("UPDATE DuenoCarga SET lugar = '"+direc.getText().toString() +"' where id like "+dato);
+        db.execSQL("UPDATE DuenoCarga SET lugar = '"+direc.getText().toString() +"' where id like "+dato);*/
 
         ciudadorigen = (ListView) findViewById(R.id.listViewCiudadorigen);
 
@@ -42,7 +42,7 @@ public class CiudadOrigenMainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    Intent intent = new Intent(CiudadOrigenMainActivity.this, CiudadDestinoMainActivity.class);
+                    Intent intent = new Intent(CiudadOrigenMainActivity.this, CargaGeneralMainActivity.class);
                     startActivity(intent);
                     Toast.makeText(parent.getContext(), "Seleccionaste ciudad " +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }

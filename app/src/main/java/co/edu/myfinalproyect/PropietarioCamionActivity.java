@@ -67,4 +67,8 @@ public class PropietarioCamionActivity extends AppCompatActivity {
     }
 
 
+    public void solicitud(View view) {
+        Intent intent = new Intent(this, solicitudesCargaPropietario.class);
+        startActivity(intent);
+    }
 }

@@ -45,10 +45,10 @@
 
     <Button
         android:id="@+id/btnAceptarCarga"
-        android:onClick="aceptaCarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aceptar"/>
+        android:onClick="aceptaCarga"
+        android:text="Aceptar" />
 
     <Button
         android:id="@+id/btnRechazar"

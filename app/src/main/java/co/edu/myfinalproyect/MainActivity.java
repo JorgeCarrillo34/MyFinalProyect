@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private int gender;
     private String sex, selectedUser;
 
-
+    //Calle 31 A # 65 F 30, Medellín, Antioquia
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
